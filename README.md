@@ -3,18 +3,17 @@
 <div align="center">
   <img src="./.github/tailwindcss-mark.svg" alt="Tailwind CSS" width="108" height="66">
   <h1>Tailwind CSS Icons Plugin</h1>
-  <p>Automatic icon creator for Tailwind</p>
+  <p>Automatic icon creator for Tailwind CSS</p>
 </div>
 
 Use **any** icons with **Pure CSS** for [TailwindCSS](https://tailwindcss.com).
 
-<blockquote>
-<p>💡 Recommend reading - [@antfu](https://github.com/antfu)'s post titled [Icons in Pure CSS](https://antfu.me/posts/icons-in-pure-css).</p>
-</blockquote>
+Recommended reading - [@antfu](https://github.com/antfu)'s post titled [Icons in Pure CSS](https://antfu.me/posts/icons-in-pure-css).
 
 Follow the following conventions to use the icons
 
 - `<prefix>[<collection>-<icon>]`
+- `i-[<collection>-<icon>]` - default prefix is `i-`
 
 For examples:
 
