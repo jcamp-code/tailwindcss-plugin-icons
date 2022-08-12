@@ -37,7 +37,7 @@ export function createPluginIcons(options: IconsOptions = {}): PluginCreator {
   }
 
   return function ({ matchUtilities }) {
-    const _prefix = (options?.prefix || 'i-').replace(/-$/, '')
+    const _prefix = (options.prefix || 'i-').replace(/-$/, '')
 
     matchUtilities({
       [_prefix]: (value: string) => getCSS(value, 'def'),

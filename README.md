@@ -111,4 +111,4 @@ It is also based on some ideas by [InfiniteXyy](https://github.com/InfiniteXyy) 
 
 ## License
 
-MIT License &copy; 2021-PRESENT [John Campion](https://github.com/JohnCampionJr/)
+MIT License &copy; 2022-PRESENT [John Campion](https://github.com/JohnCampionJr/)

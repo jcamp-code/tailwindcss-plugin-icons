@@ -23,7 +23,7 @@
     "c8": "^7.12.0",
     "jest": "^28.1.3",
     "np": "^7.6.2",
-    "postcss": "^8.4.14",
+    "postcss": "^8.4.16",
     "prettier": "^2.7.1",
     "tailwindcss": "^3.1.0",
     "typescript": "4.7.4"
@@ -48,7 +48,7 @@
     "icons"
   ],
   "dependencies": {
-    "@iconify/json": "2.1.90",
+    "@iconify/json": "2.1.91",
     "@iconify/utils": "^1.0.33"
   }
 }
