@@ -1,6 +1,6 @@
 {
   "name": "@jcamp/tailwindcss-plugin-icons",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Automatic icon creator for Tailwind",
   "main": "dist/index.js",
   "scripts": {
