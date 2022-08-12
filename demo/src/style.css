@@ -31,6 +31,9 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+.dark body {
+  background-color: #222222;
+}
 
 h1 {
   font-size: 3.2em;
