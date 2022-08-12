@@ -66,7 +66,7 @@ npm i -D @iconify/json
 
 ## Configuration
 
-Refer to the [type definition](https://github.com/unocss/unocss/blob/main/packages/preset-icons/src/types.ts#L4) for all configurations avaliable.
+Refer to the [type definition](https://github.com/jcamp-code/tailwindcss-plugin-icons/blob/main/src/types.ts) for all configurations avaliable.
 
 ### Extra Properties
 
@@ -107,7 +107,7 @@ In `Node.js` the preset will search for the installed iconify dataset automatica
 
 This plugin is heaviliy inspired by and based on the work of [UnoCSS Icons Preset](https://github.com/unocss/unocss/tree/main/packages/preset-icons) created by [Anthony Fu](https://github.com/antfu)
 
-It is also based on some ideas by [InfiniteXyy](https://github.com/InfiniteXyy) and their work at [tailwindcss-iconify](https://github.com/InfiniteXyy/tailwindcss-iconify). In particular, their idea for spawning a node process to allow async code to work.
+It is also based on some ideas by [InfiniteXyy](https://github.com/InfiniteXyy) and their work at [tailwindcss-iconify](https://github.com/InfiniteXyy/tailwindcss-iconify). In particular, their idea for spawning a node process to allow async code to work in Tailwinds sync plugin system.
 
 ## License
 
