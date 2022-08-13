@@ -36,10 +36,10 @@ export function createPluginIcons(options: IconsOptions = {}): PluginCreator {
     return JSON.parse(svg)
   }
 
-  return function ({ matchUtilities }) {
+  return function ({ matchComponents }) {
     const _prefix = (options.prefix || 'i-').replace(/-$/, '')
 
-    matchUtilities({
+    matchComponents({
       [_prefix]: (value: string) => getCSS(value, 'def'),
       [_prefix + '-bg']: (value: string) => getCSS(value, 'bg'),
       [_prefix + '-auto']: (value: string) => getCSS(value, 'auto'),
