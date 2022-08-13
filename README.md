@@ -89,8 +89,6 @@ By default, this preset will choose the rendering modes automatically for each i
 - `i-bg-` for `background-img` - renders the icon as a background image
 - `i-mask-` for `mask` - renders the icon as a mask image
 
-For example, `vscode-icons:file-type-light-db`, an icon with colors that will be rendered as a background image. Use `vscode-icons:file-type-light-db` to render it as a mask image and bypass it's colors.
-
 ### Browser
 
 Because Tailwind does not allow async plugins, see https://github.com/tailwindlabs/tailwindcss/discussions/7277, we are using a node process to retrieve the icons, so right now, this will not work in the browser directly.
