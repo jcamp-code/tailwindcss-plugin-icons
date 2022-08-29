@@ -1,10 +1,10 @@
-const path = require('path')
-const iconsPlugin = require('../dist/index.js')
-const postcss = require('postcss')
-const tailwindcss = require('tailwindcss')
+const path = require("path");
+const iconsPlugin = require("../dist/index.js");
+const postcss = require("postcss");
+const tailwindcss = require("tailwindcss");
 
-function run(config, css = '@tailwind components', plugin = tailwindcss) {
-  let { currentTestName } = expect.getState()
+function run(config, css = "@tailwind components", plugin = tailwindcss) {
+  let { currentTestName } = expect.getState();
   config = {
     ...{
       plugins: [iconsPlugin(config.icons)],
@@ -13,96 +13,130 @@ function run(config, css = '@tailwind components', plugin = tailwindcss) {
       },
     },
     ...config,
-  }
+  };
 
   return postcss(plugin(config)).process(css, {
     from: `${path.resolve(__filename)}?test=${currentTestName}`,
-  })
+  });
 }
 
-it('makesIcon', () => {
+it("makesIcon", () => {
   const config = {
     content: [{ raw: String.raw`<div class="i-[carbon-add]"></div>` }],
-  }
+  };
 
-  return run(config).then(result => {
-    const icon = String.raw`--tw-icon`
+  return run(config).then((result) => {
+    const icon = String.raw`--tw-icon`;
     const width = String.raw`width: 1em;
-    height: 1em`
+    height: 1em`;
 
-    expect(result.css).toContain(icon)
-    expect(result.css).toContain(width)
-  })
-})
+    expect(result.css).toContain(icon);
+    expect(result.css).toContain(width);
+  });
+});
 
-it('ignoresBadIcons', () => {
+it("makesIconWithSlash", () => {
+  const config = {
+    content: [{ raw: String.raw`<div class="i-[carbon/add]"></div>` }],
+  };
+
+  return run(config).then((result) => {
+    const icon = String.raw`--tw-icon`;
+    const width = String.raw`width: 1em;
+    height: 1em`;
+
+    expect(result.css).toContain(icon);
+    expect(result.css).toContain(width);
+  });
+});
+
+it("ignoresBadIcons", () => {
   const config = {
     content: [{ raw: String.raw`<div class="i-[carbon-ad]"></div>` }],
-  }
+  };
 
-  return run(config).then(result => {
-    const icon = String.raw`--tw-icon`
+  return run(config).then((result) => {
+    const icon = String.raw`--tw-icon`;
 
-    expect(result.css).toEqual(expect.not.stringContaining(icon))
-  })
-})
+    expect(result.css).toEqual(expect.not.stringContaining(icon));
+  });
+});
 
-it('makesBgIcon', () => {
+it("makesBgIcon", () => {
   const config = {
     content: [{ raw: String.raw`<div class="i-bg-[carbon-add]"></div>` }],
-  }
+  };
 
-  return run(config).then(result => {
-    const icon = String.raw`--tw-icon`
-    const bg = String.raw`background: url("data:image/svg+`
+  return run(config).then((result) => {
+    const icon = String.raw`--tw-icon`;
+    const bg = String.raw`background: url("data:image/svg+`;
 
-    expect(result.css).toEqual(expect.not.stringContaining(icon))
-    expect(result.css).toContain(bg)
-  })
-})
+    expect(result.css).toEqual(expect.not.stringContaining(icon));
+    expect(result.css).toContain(bg);
+  });
+});
 
-it('usesUnits', () => {
+it("usesUnits", () => {
   const config = {
     content: [{ raw: String.raw`<div class="i-[carbon-add]"></div>` }],
     icons: {
-      unit: 'px',
+      unit: "px",
     },
-  }
+  };
 
-  return run(config).then(result => {
+  return run(config).then((result) => {
     const width = String.raw`width: 1px;
-    height: 1px`
-    expect(result.css).toContain(width)
-  })
-})
+    height: 1px`;
+    expect(result.css).toContain(width);
+  });
+});
 
-it('usesScale', () => {
+it("usesScale", () => {
   const config = {
     content: [{ raw: String.raw`<div class="i-[carbon-add]"></div>` }],
     icons: {
       scale: 1.2,
     },
-  }
+  };
 
-  return run(config).then(result => {
+  return run(config).then((result) => {
     const width = String.raw`width: 1.2em;
-    height: 1.2em`
-    expect(result.css).toContain(width)
-  })
-})
+    height: 1.2em`;
+    expect(result.css).toContain(width);
+  });
+});
 
-it('usesScaleAndUnits', () => {
+it("usesScaleAndUnits", () => {
   const config = {
     content: [{ raw: String.raw`<div class="i-[carbon-add]"></div>` }],
     icons: {
       scale: 20,
-      unit: 'px',
+      unit: "px",
     },
-  }
+  };
 
-  return run(config).then(result => {
+  return run(config).then((result) => {
     const width = String.raw`width: 20px;
-    height: 20px`
-    expect(result.css).toContain(width)
-  })
-})
+    height: 20px`;
+    expect(result.css).toContain(width);
+  });
+});
+
+it("makesCustomIcon", () => {
+  const config = {
+    content: [{ raw: String.raw`<div class="i-[custom-icon1]"></div>` }],
+    icons: {
+      jsonCollections: {
+        custom: "json/custom-collection.json",
+      },
+    },
+  };
+
+  return run(config).then((result) => {
+    const icon = String.raw`--tw-icon`;
+    const width = String.raw`width: 1em;
+    height: 1em`;
+    expect(result.css).toContain(icon);
+    expect(result.css).toContain(width);
+  });
+});

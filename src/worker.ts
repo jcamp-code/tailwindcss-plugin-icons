@@ -2,6 +2,7 @@ import type { IconifyLoaderOptions } from '@iconify/utils/lib/loader/types'
 import { encodeSvgForCss } from '@iconify/utils/lib/svg/encode-svg-for-css'
 import type { IconsOptions } from './types'
 import { loader } from './loader'
+import { promises as fs } from 'fs'
 
 // Tailwind does not support async plugins
 // So my workaround is to load icon in a worker process with spawnSync
@@ -9,23 +10,42 @@ import { loader } from './loader'
 
 const COLLECTION_NAME_PARTS_MAX = 3
 const iconName = process.argv[2]
+
 if (!iconName) process.exit(0)
 
 const modeOverride = process.argv[3] as 'def' | 'bg' | 'auto' | 'mask'
 if (!modeOverride) process.exit(0)
 
-const options = JSON.parse(process.argv[4]) as IconsOptions
+let optionsText = Buffer.from(process.argv[4], 'base64').toString('ascii')
+
+const options = JSON.parse(optionsText) as IconsOptions
 
 const {
   scale = 1,
   prefix = 'i-',
   warn = false,
-  collections: customCollections,
+  jsonCollections = {},
   extraProperties = {},
   customizations = {},
   autoInstall = false,
   unit,
 } = options
+
+let customCollections = {}
+
+Object.keys(jsonCollections).forEach(key => {
+  const file = jsonCollections[key]
+  if (fs.stat(file)) {
+    try {
+      customCollections[key] = async () => {
+        const content = await fs.readFile(file, 'utf8')
+        return JSON.parse(content)
+      }
+    } catch (err) {
+      if (warn) console.warn('[tw-icons]', `problem reading json collection "${file}"`)
+    }
+  }
+})
 
 let { mode = 'auto' } = options
 
@@ -63,18 +83,25 @@ let svg: string | undefined
 const usedProps = {}
 
 async function generateCSS(value: any) {
-  const parts = value.split(/-/g)
-  for (let i = COLLECTION_NAME_PARTS_MAX; i >= 1; i--) {
-    collection = parts.slice(0, i).join('-')
-    name = parts.slice(i).join('-')
+  if (value.includes('/')) {
+    ;[collection, name] = value.split('/')
     svg = await iconLoader(collection, name, { ...loaderOptions, usedProps })
-
-    if (svg) break
+  } else {
+    const parts = value.split(/-/g)
+    for (let i = COLLECTION_NAME_PARTS_MAX; i >= 1; i--) {
+      collection = parts.slice(0, i).join('-')
+      name = parts.slice(i).join('-')
+      svg = await iconLoader(collection, name, {
+        ...loaderOptions,
+        usedProps,
+      })
+      if (svg) break
+    }
   }
 
   if (!svg) {
     if (warn) console.warn('[tw-icons]', `failed to load icon "${value}"`)
-    return
+    return {}
   }
   const url = `url("data:image/svg+xml;utf8,${encodeSvgForCss(svg)}")`
 

@@ -18,21 +18,22 @@ export const defaultConfig = {
 
 export function createPluginIcons(options: IconsOptions = {}): PluginCreator {
   function getCSS(value: string, mode: string) {
+    let options64 = Buffer.from(JSON.stringify(options)).toString('base64')
+
     const { stderr, stdout } = spawnSync('node', [
       resolve(__dirname, './worker'),
       value,
       mode,
-      JSON.stringify(options),
+      options64,
     ])
-    // console.log('getcss: ' + value + '?' + mode)
+
     const svg = String(stdout)
     const err = String(stderr)
     if (err) {
-      // console.error(`[tw-icons]: ${err}`)
+      if (options.warn ?? false) console.error(`[tw-icons]: ${err}`)
       return {}
     }
 
-    // console.log(svg)
     return JSON.parse(svg)
   }
 

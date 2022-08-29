@@ -44,13 +44,20 @@ export interface IconsOptions {
    */
   warn?: boolean
   /**
+   * JSON icon files to be loaded, allows use of Font Awesome Pro (eg fa-pro-duotone)
+   *
+   * @default {}
+   */
+  jsonCollections?: Record<string, string>
+  /**
    * In Node.js environment, the preset will search for the installed iconify dataset automatically.
    * When using in the browser, this options is provided to provide dataset with custom loading mechanism.
    */
-  collections?: Record<
-    string,
-    (() => Awaitable<IconifyJSON>) | undefined | CustomIconLoader | InlineCollection
-  >
+  // doesn't currently work with tailwind plugin due to only using in node worker limitations
+  // collections?: Record<
+  //   string,
+  //   (() => Awaitable<IconifyJSON>) | undefined | CustomIconLoader | InlineCollection
+  // >
   /**
    * Custom icon customizations.
    */
