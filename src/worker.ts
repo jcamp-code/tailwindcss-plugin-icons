@@ -20,7 +20,7 @@ let optionsText = Buffer.from(process.argv[4], 'base64').toString('ascii')
 
 const options = JSON.parse(optionsText) as IconsOptions
 
-const {
+let {
   scale = 1,
   prefix = 'i-',
   warn = false,
@@ -78,14 +78,28 @@ let iconLoader = loader(options)
 
 let collection = ''
 let name = ''
+let scaleOverride = ''
 let svg: string | undefined
 
 const usedProps = {}
 
-async function generateCSS(value: any) {
+async function generateCSS(value: string) {
+  const scaleRegex = /\/([\d.]+)(px|em|rem)?$/i
+  const scaleParts = value?.match(scaleRegex)
+
+  if (typeof scaleParts === 'string' && Number(scaleParts) != NaN) {
+    value = value.replace(scaleRegex, '')
+    scale = Number(scaleParts)
+  } else if (scaleParts && Number(scaleParts[1]) != NaN) {
+    value = value.replace(scaleRegex, '')
+    scale = Number(scaleParts[1])
+    unit = scaleParts[2]
+  }
+
   if (value.includes('/')) {
     ;[collection, name] = value.split('/')
-    svg = await iconLoader(collection, name, { ...loaderOptions, usedProps })
+
+    svg = await iconLoader(collection, name, { ...loaderOptions, usedProps, scale })
   } else {
     const parts = value.split(/-/g)
     for (let i = COLLECTION_NAME_PARTS_MAX; i >= 1; i--) {
@@ -94,6 +108,7 @@ async function generateCSS(value: any) {
       svg = await iconLoader(collection, name, {
         ...loaderOptions,
         usedProps,
+        scale,
       })
       if (svg) break
     }

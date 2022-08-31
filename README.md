@@ -64,6 +64,30 @@ If you prefer to install the all the icon sets available on Iconify at once (~13
 npm i -D @iconify/json
 ```
 
+## Class names
+
+The structure is `i-[<collection>/<name>/<scaling>]`
+
+The collection and name can be divided by either a dash `-` or a slash `/`. Unfortunately, Tailwind CSS will not pass a colon `:` properly to the plugin.
+
+If you want to add scaling to the class, you must separate that with a slash `/`. You can add the unit `(px|em|rem)` but it is optional. If omitted, it will use the default specified by the config.
+
+```html
+<div class="i-[logos-vue/2]" />
+<div class="i-[logos/vue/24px]" />
+<div class="i-[logos-vue/2rem]" />
+```
+
+## JSON collections
+
+As a big fan of Font Awesome, I wanted this to work with their pro collections. It now does. There is a new `jsonCollections` property in the config that allows you to tell the plugin where to load JSON files from.
+
+```js
+jsonCollections: {
+  custom: 'json/custom-collection.json',
+},
+```
+
 ## Configuration
 
 Refer to the [type definition](https://github.com/jcamp-code/tailwindcss-plugin-icons/blob/main/src/types.ts) for all configurations avaliable.
