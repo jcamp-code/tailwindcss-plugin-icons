@@ -48,7 +48,7 @@
     "icons"
   ],
   "dependencies": {
-    "@iconify/json": "2.1.100",
+    "@iconify/json": "2.1.136",
     "@iconify/utils": "^1.0.33"
   }
 }
