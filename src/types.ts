@@ -11,7 +11,7 @@ export interface IconsOptions {
   /**
    * Scale related to the current font size (1em).
    *
-   * @default 1
+   * @default 1.2
    */
   scale?: number
   /**
@@ -34,9 +34,10 @@ export interface IconsOptions {
   /**
    * Extra CSS properties applied to the generated CSS
    *
-   * @default {}
+   * @default "{display: inline-block, 'vertical-align': 'middle'}"
+   *
    */
-  extraProperties?: Record<string, string>
+  extraCssProperties?: Record<string, string>
   /**
    * Emit warning when missing icons are matched
    *

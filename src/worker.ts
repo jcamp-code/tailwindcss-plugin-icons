@@ -21,11 +21,11 @@ let optionsText = Buffer.from(process.argv[4], 'base64').toString('ascii')
 const options = JSON.parse(optionsText) as IconsOptions
 
 let {
-  scale = 1,
+  scale = 1.2,
   prefix = 'i-',
   warn = false,
   jsonCollections = {},
-  extraProperties = {},
+  extraCssProperties = { display: 'inline-block', 'vertical-align': 'middle' },
   customizations = {},
   autoInstall = false,
   unit,
@@ -62,7 +62,7 @@ const loaderOptions: IconifyLoaderOptions = {
   warn: undefined,
   customizations: {
     ...customizations,
-    additionalProps: { ...extraProperties },
+    additionalProps: { ...extraCssProperties },
     trimCustomSvg: true,
     async iconCustomizer(collection, icon, props) {
       await customizations.iconCustomizer?.(collection, icon, props)
@@ -87,10 +87,10 @@ async function generateCSS(value: string) {
   const scaleRegex = /\/([\d.]+)(px|em|rem)?$/i
   const scaleParts = value?.match(scaleRegex)
 
-  if (typeof scaleParts === 'string' && Number(scaleParts) != NaN) {
+  if (scaleParts && typeof scaleParts === 'string' && !Number.isNaN(scaleParts)) {
     value = value.replace(scaleRegex, '')
     scale = Number(scaleParts)
-  } else if (scaleParts && Number(scaleParts[1]) != NaN) {
+  } else if (scaleParts && !Number.isNaN(scaleParts[1])) {
     value = value.replace(scaleRegex, '')
     scale = Number(scaleParts[1])
     unit = scaleParts[2]
