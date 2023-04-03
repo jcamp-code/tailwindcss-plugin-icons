@@ -27,8 +27,8 @@ it('makesIcon', () => {
 
   return run(config).then(result => {
     const icon = String.raw`--tw-icon`
-    const width = String.raw`width: 1em;
-    height: 1em`
+    const width = String.raw`width: 1.2em;
+    height: 1.2em`
 
     expect(result.css).toContain(icon)
     expect(result.css).toContain(width)
@@ -42,8 +42,8 @@ it('makesIconWithSlash', () => {
 
   return run(config).then(result => {
     const icon = String.raw`--tw-icon`
-    const width = String.raw`width: 1em;
-    height: 1em`
+    const width = String.raw`width: 1.2em;
+    height: 1.2em`
 
     expect(result.css).toContain(icon)
     expect(result.css).toContain(width)
@@ -85,8 +85,8 @@ it('usesUnits', () => {
   }
 
   return run(config).then(result => {
-    const width = String.raw`width: 1px;
-    height: 1px`
+    const width = String.raw`width: 1.2px;
+    height: 1.2px`
     expect(result.css).toContain(width)
   })
 })
@@ -95,13 +95,13 @@ it('usesScale', () => {
   const config = {
     content: [{ raw: String.raw`<div class="i-[carbon-add]"></div>` }],
     icons: {
-      scale: 1.2,
+      scale: 1,
     },
   }
 
   return run(config).then(result => {
-    const width = String.raw`width: 1.2em;
-    height: 1.2em`
+    const width = String.raw`width: 1em;
+    height: 1em`
     expect(result.css).toContain(width)
   })
 })
@@ -134,8 +134,8 @@ it('makesCustomIcon', () => {
 
   return run(config).then(result => {
     const icon = String.raw`--tw-icon`
-    const width = String.raw`width: 1em;
-    height: 1em`
+    const width = String.raw`width: 1.2em;
+    height: 1.2em`
     expect(result.css).toContain(icon)
     expect(result.css).toContain(width)
   })
