@@ -2,8 +2,8 @@ lockfileVersion: '6.0'
 
 dependencies:
   '@iconify/json':
-    specifier: 2.2.45
-    version: 2.2.45
+    specifier: 2.2.47
+    version: 2.2.47
   '@iconify/utils':
     specifier: ^2.1.5
     version: 2.1.5
@@ -709,8 +709,8 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@iconify/json@2.2.45:
-    resolution: {integrity: sha512-gSCDDAHnjCMN/n3BUStVS30Z375o/I++kQBLJy4n93FoL0Xv+UjQYcRo8+Vfjz0/Zw/bm8UdLIQbbxvblHafeA==}
+  /@iconify/json@2.2.47:
+    resolution: {integrity: sha512-bXnPDAQ4YK6upTHjvrIFVpWnE74d5fvh2sButnGK7vMXXH+/78cj7hPZF8r5dC41coxx1Qmey92xalEZ3o9xBw==}
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.0
