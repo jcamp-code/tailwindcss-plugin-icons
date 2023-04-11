@@ -2,7 +2,7 @@
   "name": "tw-plugin-demo",
   "private": true,
   "version": "0.0.0",
-  "packageManager": "pnpm@8.1.1",
+  "packageManager": "pnpm@8.2.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
