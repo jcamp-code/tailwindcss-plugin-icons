@@ -36,10 +36,10 @@
     "access": "public"
   },
   "peerDependencies": {
-    "tailwindcss": ">=3.3.1"
+    "tailwindcss": ">=3.3.2"
   },
   "dependencies": {
-    "@iconify/json": "2.2.54",
+    "@iconify/json": "2.2.57",
     "@iconify/utils": "^2.1.5"
   },
   "devDependencies": {
@@ -47,16 +47,16 @@
     "@commitlint/config-conventional": "^17.6.1",
     "@iconify/types": "^2.0.0",
     "@jcamp/eslint-config": "0.6.1",
-    "@types/node": "^18.15.13",
+    "@types/node": "^18.16.2",
     "c8": "^7.13.0",
     "changelogen": "^0.5.3",
     "eslint": "8.39.0",
     "jest": "^29.5.0",
-    "lint-staged": "^13.2.1",
+    "lint-staged": "^13.2.2",
     "postcss": "^8.4.23",
-    "prettier": "2.8.7",
+    "prettier": "2.8.8",
     "simple-git-hooks": "^2.8.1",
-    "tailwindcss": "^3.3.1",
+    "tailwindcss": "^3.3.2",
     "typescript": "^5.0.4"
   },
   "jest": {
