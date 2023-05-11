@@ -39,7 +39,7 @@
     "tailwindcss": ">=3.3.2"
   },
   "dependencies": {
-    "@iconify/json": "2.2.61",
+    "@iconify/json": "2.2.63",
     "@iconify/utils": "^2.1.5"
   },
   "devDependencies": {
@@ -47,7 +47,7 @@
     "@commitlint/config-conventional": "^17.6.3",
     "@iconify/types": "^2.0.0",
     "@jcamp/eslint-config": "0.6.1",
-    "@types/node": "^18.16.5",
+    "@types/node": "^18.16.8",
     "c8": "^7.13.0",
     "changelogen": "^0.5.3",
     "eslint": "8.40.0",
