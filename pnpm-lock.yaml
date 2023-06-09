@@ -6,11 +6,11 @@ settings:
 
 dependencies:
   '@iconify/json':
-    specifier: 2.2.74
-    version: 2.2.74
+    specifier: 2.2.76
+    version: 2.2.76
   '@iconify/utils':
-    specifier: ^2.1.5
-    version: 2.1.5
+    specifier: ^2.1.6
+    version: 2.1.6
 
 devDependencies:
   '@commitlint/cli':
@@ -149,8 +149,8 @@ packages:
       find-up: 5.0.0
     dev: false
 
-  /@antfu/utils@0.7.2:
-    resolution: {integrity: sha512-vy9fM3pIxZmX07dL+VX1aZe7ynZ+YyB0jY+jE6r3hOK6GNY2t6W8rzpFC4tgpbXUYABkFQwgJq2XYXlxbXAI0g==}
+  /@antfu/utils@0.7.4:
+    resolution: {integrity: sha512-qe8Nmh9rYI/HIspLSTwtbMFPj6dISG6+dJnOguTlPNXtCvS2uezdxscVBb7/3DrmNbQK49TDqpkSQ1chbRGdpQ==}
     dev: false
 
   /@babel/code-frame@7.21.4:
@@ -718,8 +718,8 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@iconify/json@2.2.74:
-    resolution: {integrity: sha512-qKJxXzrHam1a8y+GH1un+5dwvhVr01T8leYR13NJgVSw3vl1bscggyEGq0YYXBFsSsE78tKYY+AwVtucvMGeuQ==}
+  /@iconify/json@2.2.76:
+    resolution: {integrity: sha512-SXnvEurfutQ0ytXGxzQZ3TU1/vuYl1XoBIvAkvAVIlxu4qXiqSJQbXoZ+bATInKdeai/HuALcL0vAxUR5FLjOg==}
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.0
@@ -728,14 +728,14 @@ packages:
   /@iconify/types@2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
 
-  /@iconify/utils@2.1.5:
-    resolution: {integrity: sha512-6MvDI+I6QMvXn5rK9KQGdpEE4mmLTcuQdLZEiX5N+uZB+vc4Yw9K1OtnOgkl8mp4d9X0UrILREyZgF1NUwUt+Q==}
+  /@iconify/utils@2.1.6:
+    resolution: {integrity: sha512-WJNcj/mmFQoYok+576EexlCQe/g2tZ8X9jR4QLo++z6DlVqrjwt7FBYetTQ3iyTtrPMFHcAx0JiCqtUz30XG5A==}
     dependencies:
       '@antfu/install-pkg': 0.1.1
-      '@antfu/utils': 0.7.2
+      '@antfu/utils': 0.7.4
       '@iconify/types': 2.0.0
       debug: 4.3.4
-      kolorist: 1.7.0
+      kolorist: 1.8.0
       local-pkg: 0.4.3
     transitivePeerDependencies:
       - supports-color
@@ -4026,8 +4026,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /kolorist@1.7.0:
-    resolution: {integrity: sha512-ymToLHqL02udwVdbkowNpzjFd6UzozMtshPQKVi5k1EjKRqKqBrOnE9QbLEb0/pV76SAiIT13hdL8R6suc+f3g==}
+  /kolorist@1.8.0:
+    resolution: {integrity: sha512-Y+60/zizpJ3HRH8DCss+q95yr6145JXZo46OTpFvDZWLfRCE4qChOyk1b26nMaNpfHHgxagk9dXT5OP0Tfe+dQ==}
     dev: false
 
   /leven@3.1.0:
