@@ -39,18 +39,18 @@
     "tailwindcss": ">=3.3.2"
   },
   "dependencies": {
-    "@iconify/json": "2.2.76",
-    "@iconify/utils": "^2.1.6"
+    "@iconify/json": "2.2.81",
+    "@iconify/utils": "^2.1.7"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.5",
     "@commitlint/config-conventional": "^17.6.5",
     "@iconify/types": "^2.0.0",
     "@jcamp/eslint-config": "0.6.1",
-    "@types/node": "^18.16.16",
+    "@types/node": "^18.16.18",
     "c8": "^7.14.0",
     "changelogen": "^0.5.3",
-    "eslint": "8.42.0",
+    "eslint": "8.43.0",
     "jest": "^29.5.0",
     "lint-staged": "^13.2.2",
     "postcss": "^8.4.24",
