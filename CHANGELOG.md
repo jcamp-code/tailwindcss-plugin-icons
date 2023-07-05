@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.6.0 - 2023-07-04
+
+[compare changes](https://github.com/jcamp-code/tailwindcss-plugin-icons/compare/v0.5.0...v0.5.1)
+
+### 🚀 Enhancements
+
+- Updated to latest tailwind plugin setup ([#113](https://github.com/jcamp-code/tailwindcss-plugin-icons/pull/113))
+
 ## [0.5.0] - 2023-04-02
 
 ### - Renamed `extraProperties` to `extraCssProperties`
