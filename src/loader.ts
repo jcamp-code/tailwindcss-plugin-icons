@@ -1,12 +1,13 @@
 import type { UniversalIconLoader } from '@iconify/utils/lib/loader/types'
-import type { IconsOptions } from './types'
 import { loadIcon } from '@iconify/utils'
+import nodeLoader from '@iconify/utils/lib/loader/node-loader.cjs'
 
-export const isNode = typeof process < 'u' && typeof process.stdout < 'u' && !process.versions.deno
+export const isNode =
+  typeof process < 'u' && typeof process.stdout < 'u' && !process.versions.deno
 export const isVSCode = isNode && !!process.env.VSCODE_CWD
 
 function createNodeLoader() {
-  return require('@iconify/utils/lib/loader/node-loader.cjs').loadNodeIcon
+  return nodeLoader.loadNodeIcon
 }
 
 function combineLoaders(loaders: UniversalIconLoader[]) {
@@ -18,7 +19,7 @@ function combineLoaders(loaders: UniversalIconLoader[]) {
   })
 }
 
-export function loader(options: IconsOptions = {}): UniversalIconLoader {
+export function loader(): UniversalIconLoader {
   const loaders: UniversalIconLoader[] = []
   if (isNode && !isVSCode) loaders.push(createNodeLoader())
   loaders.push(loadIcon)

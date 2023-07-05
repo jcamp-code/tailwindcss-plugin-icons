@@ -1,10 +1,10 @@
-const path = require('path')
-const iconsPlugin = require('../dist/index.js')
-const postcss = require('postcss')
-const tailwindcss = require('tailwindcss')
+import path from 'node:path'
+import postcss from 'postcss'
+import tailwindcss from 'tailwindcss'
+import iconsPlugin from '../dist/index.js'
 
 function run(config, css = '@tailwind components', plugin = tailwindcss) {
-  let { currentTestName } = expect.getState()
+  const { currentTestName } = expect.getState()
   config = {
     ...{
       plugins: [iconsPlugin(config.icons)],
@@ -25,7 +25,7 @@ it('makesIcon', () => {
     content: [{ raw: String.raw`<div class="i-[carbon-add]"></div>` }],
   }
 
-  return run(config).then(result => {
+  return run(config).then((result) => {
     const icon = String.raw`--tw-icon`
     const width = String.raw`width: 1.2em;
     height: 1.2em`
@@ -40,7 +40,7 @@ it('makesIconWithSlash', () => {
     content: [{ raw: String.raw`<div class="i-[carbon/add]"></div>` }],
   }
 
-  return run(config).then(result => {
+  return run(config).then((result) => {
     const icon = String.raw`--tw-icon`
     const width = String.raw`width: 1.2em;
     height: 1.2em`
@@ -55,7 +55,7 @@ it('ignoresBadIcons', () => {
     content: [{ raw: String.raw`<div class="i-[carbon-ad]"></div>` }],
   }
 
-  return run(config).then(result => {
+  return run(config).then((result) => {
     const icon = String.raw`--tw-icon`
 
     expect(result.css).toEqual(expect.not.stringContaining(icon))
@@ -67,7 +67,7 @@ it('makesBgIcon', () => {
     content: [{ raw: String.raw`<div class="i-bg-[carbon-add]"></div>` }],
   }
 
-  return run(config).then(result => {
+  return run(config).then((result) => {
     const icon = String.raw`--tw-icon`
     const bg = String.raw`background: url("data:image/svg+`
 
@@ -84,7 +84,7 @@ it('usesUnits', () => {
     },
   }
 
-  return run(config).then(result => {
+  return run(config).then((result) => {
     const width = String.raw`width: 1.2px;
     height: 1.2px`
     expect(result.css).toContain(width)
@@ -99,7 +99,7 @@ it('usesScale', () => {
     },
   }
 
-  return run(config).then(result => {
+  return run(config).then((result) => {
     const width = String.raw`width: 1em;
     height: 1em`
     expect(result.css).toContain(width)
@@ -115,7 +115,7 @@ it('usesScaleAndUnits', () => {
     },
   }
 
-  return run(config).then(result => {
+  return run(config).then((result) => {
     const width = String.raw`width: 20px;
     height: 20px`
     expect(result.css).toContain(width)
@@ -132,7 +132,7 @@ it('makesCustomIcon', () => {
     },
   }
 
-  return run(config).then(result => {
+  return run(config).then((result) => {
     const icon = String.raw`--tw-icon`
     const width = String.raw`width: 1.2em;
     height: 1.2em`
@@ -149,7 +149,7 @@ it('usesScaleOverride', () => {
     },
   }
 
-  return run(config).then(result => {
+  return run(config).then((result) => {
     const width = String.raw`width: 2em;
     height: 2em`
     expect(result.css).toContain(width)
@@ -164,7 +164,7 @@ it('usesScaleOverrideDecimal', () => {
     },
   }
 
-  return run(config).then(result => {
+  return run(config).then((result) => {
     const width = String.raw`width: 2.5em;
     height: 2.5em`
     expect(result.css).toContain(width)
@@ -179,7 +179,7 @@ it('usesScaleOverrideUnits', () => {
     },
   }
 
-  return run(config).then(result => {
+  return run(config).then((result) => {
     const width = String.raw`width: 24px;
     height: 24px`
     expect(result.css).toContain(width)
@@ -194,7 +194,7 @@ it('usesScaleOverrideUnitsRem', () => {
     },
   }
 
-  return run(config).then(result => {
+  return run(config).then((result) => {
     const width = String.raw`width: 2rem;
     height: 2rem`
     expect(result.css).toContain(width)
@@ -209,7 +209,7 @@ it('usesScaleOverrideUnitsWithDash', () => {
     },
   }
 
-  return run(config).then(result => {
+  return run(config).then((result) => {
     const width = String.raw`width: 24px;
     height: 24px`
     expect(result.css).toContain(width)
@@ -224,7 +224,7 @@ it('ignoresBadScaleOverrides', () => {
     },
   }
 
-  return run(config).then(result => {
+  return run(config).then((result) => {
     const width = String.raw`width: 1.2em;
     height: 1.2em`
     expect(result.css).toContain(width)
@@ -239,7 +239,7 @@ it('ignoresBadUnitOverrides', () => {
     },
   }
 
-  return run(config).then(result => {
+  return run(config).then((result) => {
     const width = String.raw`width: 1.2em;
     height: 1.2em`
     expect(result.css).toContain(width)

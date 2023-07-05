@@ -1,8 +1,9 @@
+import { promises as fs, statSync } from 'node:fs'
+import { Buffer } from 'node:buffer'
 import type { IconifyLoaderOptions } from '@iconify/utils/lib/loader/types'
 import { encodeSvgForCss } from '@iconify/utils/lib/svg/encode-svg-for-css'
 import type { IconsOptions } from './types'
 import { loader } from './loader'
-import { promises as fs } from 'fs'
 
 // Tailwind does not support async plugins
 // So my workaround is to load icon in a worker process with spawnSync
@@ -16,13 +17,12 @@ if (!iconName) process.exit(0)
 const modeOverride = process.argv[3] as 'def' | 'bg' | 'auto' | 'mask'
 if (!modeOverride) process.exit(0)
 
-let optionsText = Buffer.from(process.argv[4], 'base64').toString('ascii')
+const optionsText = Buffer.from(process.argv[4], 'base64').toString('ascii')
 
 const options = JSON.parse(optionsText) as IconsOptions
 
 let {
   scale = 1.2,
-  prefix = 'i-',
   warn = false,
   jsonCollections = {},
   extraCssProperties = { display: 'inline-block', 'vertical-align': 'middle' },
@@ -31,18 +31,19 @@ let {
   unit,
 } = options
 
-let customCollections = {}
+const customCollections = {}
 
-Object.keys(jsonCollections).forEach(key => {
+Object.keys(jsonCollections).forEach((key) => {
   const file = jsonCollections[key]
-  if (fs.stat(file)) {
+  if (statSync(file)) {
     try {
       customCollections[key] = async () => {
         const content = await fs.readFile(file, 'utf8')
         return JSON.parse(content)
       }
     } catch (err) {
-      if (warn) console.warn('[tw-icons]', `problem reading json collection "${file}"`)
+      if (warn)
+        console.warn('[tw-icons]', `problem reading json collection "${file}"`)
     }
   }
 })
@@ -74,11 +75,10 @@ const loaderOptions: IconifyLoaderOptions = {
   },
 }
 
-let iconLoader = loader(options)
+const iconLoader = loader()
 
 let collection = ''
 let name = ''
-let scaleOverride = ''
 let svg: string | undefined
 
 const usedProps = {}
@@ -87,7 +87,11 @@ async function generateCSS(value: string) {
   const scaleRegex = /\/([\d.]+)(px|em|rem)?$/i
   const scaleParts = value?.match(scaleRegex)
 
-  if (scaleParts && typeof scaleParts === 'string' && !Number.isNaN(scaleParts)) {
+  if (
+    scaleParts &&
+    typeof scaleParts === 'string' &&
+    !Number.isNaN(scaleParts)
+  ) {
     value = value.replace(scaleRegex, '')
     scale = Number(scaleParts)
   } else if (scaleParts && !Number.isNaN(scaleParts[1])) {
@@ -99,7 +103,11 @@ async function generateCSS(value: string) {
   if (value.includes('/')) {
     ;[collection, name] = value.split('/')
 
-    svg = await iconLoader(collection, name, { ...loaderOptions, usedProps, scale })
+    svg = await iconLoader(collection, name, {
+      ...loaderOptions,
+      usedProps,
+      scale,
+    })
   } else {
     const parts = value.split(/-/g)
     for (let i = COLLECTION_NAME_PARTS_MAX; i >= 1; i--) {
@@ -143,4 +151,6 @@ async function generateCSS(value: string) {
   }
 }
 
-generateCSS(iconName).then(result => process.stdout.write(JSON.stringify(result)))
+generateCSS(iconName).then((result) =>
+  process.stdout.write(JSON.stringify(result))
+)

@@ -27,7 +27,9 @@ For examples:
 <!-- Sun in light mode, Moon in dark mode, from Carbon -->
 <button class="i-[carbon-sun] dark:i-[carbon-moon]" />
 <!-- Twemoji of laugh, turns to tear on hovering -->
-<div class="i-[twemoji-grinning-face-with-smiling-eyes] hover:i-[twemoji-face-with-tears-of-joy]" />
+<div
+  class="i-[twemoji-grinning-face-with-smiling-eyes] hover:i-[twemoji-face-with-tears-of-joy]"
+/>
 ```
 
 <img src="https://user-images.githubusercontent.com/11247099/136709053-31b4db79-eddc-4dc6-aa2d-388086332630.gif" height="100"><br><sup>This is powered by pure CSS</sup>
@@ -45,6 +47,7 @@ Then add the plugin to your `tailwind.config.js` file:
 ```js
 // tailwind.config.js
 const icons = require('@jcamp/tailwindcss-plugin-icons')
+
 module.exports = {
   theme: {
     // ...
@@ -54,6 +57,23 @@ module.exports = {
       /* options */
     }),
     // ...
+  ],
+}
+```
+
+```ts
+// tailwind.config.t
+import type { Config } from 'tailwindcss'
+import iconsPlugin from '@jcamp/tailwindcss-plugin-icons'
+
+export default <Partial<Config>>{
+  theme: {
+    // ...
+  },
+  plugins: [
+    iconsPlugin({
+      /* options */
+    }),
   ],
 }
 ```
