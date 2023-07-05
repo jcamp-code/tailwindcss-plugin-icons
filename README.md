@@ -62,7 +62,7 @@ module.exports = {
 ```
 
 ```ts
-// tailwind.config.t
+// tailwind.config.ts
 import type { Config } from 'tailwindcss'
 import iconsPlugin from '@jcamp/tailwindcss-plugin-icons'
 

@@ -1,8 +1,10 @@
 # Changelog
 
-## v0.6.0 - 2023-07-04
+## [0.6.0] - 2023-07-04
 
-[compare changes](https://github.com/jcamp-code/tailwindcss-plugin-icons/compare/v0.5.0...v0.5.1)
+[compare changes](https://github.com/jcamp-code/tailwindcss-plugin-icons/compare/v0.5.0...v0.6.0)
+
+Now allows for easier use in Typescript Tailwind CSS Config files. Check the README for details
 
 ### 🚀 Enhancements
 
