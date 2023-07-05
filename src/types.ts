@@ -1,9 +1,4 @@
-import type {
-  CustomIconLoader,
-  IconCustomizations,
-  InlineCollection,
-} from '@iconify/utils/lib/loader/types'
-import type { IconifyJSON } from '@iconify/types'
+import type { IconCustomizations } from '@iconify/utils/lib/loader/types'
 
 export type Awaitable<T> = T | Promise<T>
 

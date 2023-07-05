@@ -1,24 +1,12 @@
 import { spawnSync } from 'node:child_process'
 import { resolve } from 'node:path'
-import plugin = require('tailwindcss/plugin')
+import { Buffer } from 'node:buffer'
+import plugin from 'tailwindcss/plugin'
 import type { PluginCreator } from 'tailwindcss/types/config'
 import type { IconsOptions } from './types'
 
-export const defaultConfig = {
-  scale: 1.2,
-  mode: 'auto',
-  prefix: 'i-',
-  warn: false,
-  collections: null,
-  extraCssProperties: { display: 'inline-block', 'vertical-align': 'middle' },
-  customizations: {},
-  autoInstall: false,
-  unit: 'em',
-} as Partial<IconsOptions>
-
-export function createPluginIcons(options: IconsOptions = {}): PluginCreator {
+function createPluginIcons(options: IconsOptions = {}): PluginCreator {
   function getCSS(value: string, mode: string) {
-    // eslint-disable-next-line n/prefer-global/buffer
     const options64 = Buffer.from(JSON.stringify(options)).toString('base64')
 
     const { stderr, stdout } = spawnSync('node', [
@@ -50,8 +38,6 @@ export function createPluginIcons(options: IconsOptions = {}): PluginCreator {
   }
 }
 
-const pluginIcons = plugin.withOptions<IconsOptions>((options) => {
+export default plugin.withOptions<IconsOptions>((options) => {
   return createPluginIcons(options)
 })
-
-module.exports = pluginIcons

@@ -1,9 +1,9 @@
 {
   "name": "tw-plugin-demo",
-  "private": true,
-  "version": "0.0.0",
-  "packageManager": "pnpm@8.6.3",
   "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@8.6.3",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
@@ -14,6 +14,7 @@
     "vue": "^3.3.4"
   },
   "devDependencies": {
+    "@iconify-json/carbon": "^1.1.18",
     "@vitejs/plugin-vue": "^4.2.3",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.24",
