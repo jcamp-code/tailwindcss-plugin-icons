@@ -1,6 +1,6 @@
 {
   "name": "@jcamp/tailwindcss-plugin-icons",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "packageManager": "^pnpm@8.1.0",
   "description": "Automatic icon creator for Tailwind",
   "author": "John Campion (https://github.com/JohnCampionJr/)",
