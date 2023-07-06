@@ -6,9 +6,7 @@ import DarkToggle from './components/DarkToggle.vue'
 
 <template>
   <DarkToggle></DarkToggle>
-  <h1 class="font-bold text-blue-900 underline dark:text-blue-100">
-    Hello world!
-  </h1>
+  <h1 class="font-bold text-blue-900 underline dark:text-blue-100">Hello world!</h1>
 
   <div class="flex flex-row">
     <div class="basis-1/3">
